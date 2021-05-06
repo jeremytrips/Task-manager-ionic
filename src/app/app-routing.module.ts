@@ -4,12 +4,12 @@ import { QueryComponent } from './query/query.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'journal',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'journal',
     pathMatch: 'full'
   },
   {

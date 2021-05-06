@@ -10,5 +10,18 @@
 </ion-header>
 
 <ion-content>
-  <p>Hello wolrd</p>
+  <!-- <p>Hello wolrd</p>
+  <div>
+    <form #query="ngForm" (ngSubmit)="onSubmit(query)" style="display: flex; flex-direction: row;">
+        <input type="text" name="query" placeholder="Type something your want to query?" required ngModel>
+        <button type="submit">Créer</button>
+    </form>
+    <div *ngIf="responseEmpty;" style="display: flex;">
+        <div style="background-color: red;">
+            <p>No data found.. Try something else!</p>
+        </div>
+    </div>
+    <app-task-list-renderer (deleteEvent)="onDelete($event)" *ngFor="let tasklist of TaskLists; let i = index" [index]="i" [tasklist]="tasklist"></app-task-list-renderer>
+    <app-task-renderer *ngFor="let task of tasks; let i = index" [index]="i" [task]="task" (deleteEvent)="onDelete($event)"></app-task-renderer>
+  </div> -->
 </ion-content>

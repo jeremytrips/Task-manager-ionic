@@ -1,0 +1,23 @@
+<div class="container" [ngStyle]="index%2?{'background-color': '#2196f39c'} : {'background-color': '#2196F3'}">
+
+  <div *ngIf="inModification; else elseBlock" style="display: flex;">
+      <input mdbInput type="text" placeholder="{{task.Description}}" class="form-control" style="flex: 5" (input)="onDescriptionModified($event.target.value)">
+      <div style="flex: 1; display: flex; margin-left: 25px;">
+          <button class="trans_button" (click)="saveModification()"><i class="bi bi-save"></i></button>
+          <button class="trans_button" (click)="close()"><i class="bi bi-x-circle"></i></button>
+      </div>
+  </div>
+  <ng-template #elseBlock style="display: flex;">
+  <!-- <div style="display: flex; flex-direction:row;"> -->
+      <p style="flex: 3;">{{task.Description}}</p>
+      <p style="flex: 1;">{{task.DateCreated | date}}</p>
+      <div style="flex: 1; margin-left: 20px; display: flex;">
+          <button class="trans_button " (click)="SetResetTask()" [ngStyle]="{'color': task.IsDone? 'green' : 'red'}" ><i class="bi bi-check-circle"></i></button>
+          <button class="trans_button" (click)="modifyTask()"><i class="bi bi-pencil"></i></button>
+          <button type="button" class="btn btn-outline-danger btn-sm" (click)="onDelete()">Delete</button>
+      </div>
+  <!-- </div> -->
+  </ng-template>
+      
+
+</div>  

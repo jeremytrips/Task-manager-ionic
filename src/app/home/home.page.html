@@ -12,7 +12,7 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item-sliding *ngFor="let tasklist of TaskLists; let i=index">
-      <ion-item button (click)="navigate(tasklist.id)">
+      <ion-item button href="/journal/{{tasklist.id}}">
         <ion-label>{{tasklist.Title}}</ion-label>
       </ion-item>
       <ion-item-options side="end">
@@ -20,4 +20,10 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+  
+  <form (submit)="onSubmit($event)">
+    <ion-input name="something" type="text" placeholder="New list"  [(ngModel)]="newList"></ion-input>
+    <ion-input name="somethingelse" type="text" placeholder="Description"  [(ngModel)]="newDescription"></ion-input>
+    <ion-button type="submit"  expand="block" fill="clear" shape="round">Create</ion-button>
+  </form>
 </ion-content>

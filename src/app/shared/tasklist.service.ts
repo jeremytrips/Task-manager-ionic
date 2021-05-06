@@ -5,10 +5,10 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class TaskList {
-  id: string;
+  id?: string;
   Title: string;
-  DateCreated: Date;
-  DateModified: Date;
+  DateCreated?: Date;
+  DateModified?: Date;
   Description: String;
 };
 

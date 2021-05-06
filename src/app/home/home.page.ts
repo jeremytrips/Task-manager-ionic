@@ -10,14 +10,23 @@ import { TaskList, TasklistService } from '../shared/tasklist.service';
 export class HomePage {
   
   TaskLists: Array<TaskList> = [];
+  newList: string = "";
+  newDescription: string = "";
 
   constructor(public tasklistService: TasklistService, public router: Router) { 
   }
   
   onSubmit(post){
-    this.tasklistService.createTaskList(post.value)
+    var temp = {
+      Title: this.newList,
+      Description: this.newDescription
+    }
+
+    this.tasklistService.createTaskList(temp)
     .subscribe((res: TaskList)=>{    
       this.TaskLists.push(res);
+      this.newDescription = "";
+      this.newList = ""
     })
   }
 

@@ -9,12 +9,11 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { QueryComponent } from './query/query.component';
-import { TaskListRendererComponent } from './task-list-renderer/task-list-renderer.component';
 import { TasksRendererComponent } from './tasks-renderer/tasks-renderer.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, QueryComponent, TaskListRendererComponent, TasksRendererComponent],
+  declarations: [AppComponent, QueryComponent, TasksRendererComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

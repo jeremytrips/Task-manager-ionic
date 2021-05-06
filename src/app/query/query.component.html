@@ -10,18 +10,34 @@
 </ion-header>
 
 <ion-content>
-  <!-- <p>Hello wolrd</p>
-  <div>
-    <form #query="ngForm" (ngSubmit)="onSubmit(query)" style="display: flex; flex-direction: row;">
-        <input type="text" name="query" placeholder="Type something your want to query?" required ngModel>
-        <button type="submit">Créer</button>
-    </form>
-    <div *ngIf="responseEmpty;" style="display: flex;">
-        <div style="background-color: red;">
-            <p>No data found.. Try something else!</p>
-        </div>
-    </div>
-    <app-task-list-renderer (deleteEvent)="onDelete($event)" *ngFor="let tasklist of TaskLists; let i = index" [index]="i" [tasklist]="tasklist"></app-task-list-renderer>
-    <app-task-renderer *ngFor="let task of tasks; let i = index" [index]="i" [task]="task" (deleteEvent)="onDelete($event)"></app-task-renderer>
-  </div> -->
+  
+  <form (submit)="onSubmit($event)">
+    <ion-input name="something" type="text" placeholder="New task?"  [(ngModel)]="query"></ion-input>
+    <ion-button type="submit"  expand="block">Search</ion-button>
+  </form>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let tasklist of TaskLists; let i=index">
+      <ion-item button href="/journal/{{tasklist.id}}">
+        <ion-label>{{tasklist.Title}}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="deleteTaskList(tasklist.id)" >Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let task of tasks; let i=index">
+      <ion-item (click)="SetResetTask(i)" >
+        <ion-label>{{task.Description}}</ion-label>
+        <ion-icon [name]="task.IsDone ? 'checkmark-circle-outline':'close-outline'" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="delete(task.id)" >Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
 </ion-content>
